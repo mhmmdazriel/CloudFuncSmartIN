@@ -37,3 +37,10 @@ exports.movephoto = functions.database.ref("/status/appbutton")
         }
       }
     });
+exports.testrtdb = functions.database.ref("/status/appbutton")
+    .onWrite((change, context) => {
+      const oldvalue = change.before.val();
+      const newvalue = change.after.val();
+      const statusID = context.params.statusID;
+      console.log(statusID + "change" + oldvalue + "to" + newvalue);
+    });
